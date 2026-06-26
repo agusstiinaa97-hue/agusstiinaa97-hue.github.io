@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agus Speranza · Health Coach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --crema:    #f7f2ec;
+      --arena:    #e8ddd0;
+      --terracota:#b5715a;
+      --verde:    #7a9e7e;
+      --text:     #2e2a26;
+      --gris:     #7a7269;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--crema);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(247,242,236,0.92);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 5%;
+      border-bottom: 1px solid var(--arena);
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: .6rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: .04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo-icon { width: 34px; height: 28px; flex-shrink: 0; }
+    .logo span { color: var(--terracota); }
+
+    nav ul {
+      list-style: none;
+      display: flex; gap: 2rem;
+    }
+    nav ul a {
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gris);
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--terracota); }
+
+    .btn-nav {
+      background: var(--terracota);
+      color: #fff !important;
+      padding: .5rem 1.2rem;
+      border-radius: 2rem;
+    }
+    .btn-nav:hover { background: #9e5e47; color: #fff !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+    }
+
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 5% 4rem 8%;
+    }
+
+    .eyebrow {
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--terracota);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--terracota);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--gris);
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--terracota);
+      color: #fff;
+      padding: .9rem 2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      transition: transform .2s, background .2s;
+      width: fit-content;
+    }
+    .btn-primary:hover { background: #9e5e47; transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1.5px solid var(--terracota);
+      color: var(--terracota);
+      padding: .9rem 2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      transition: all .2s;
+      width: fit-content;
+    }
+    .btn-secondary:hover { background: var(--terracota); color: #fff; }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-image {
+      background: var(--arena);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 60% 40%, rgba(122,158,126,.25) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 70%, rgba(181,113,90,.15) 0%, transparent 50%);
+    }
+
+    .hero-illustration {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .hero-illustration svg {
+      width: 70%; max-width: 360px;
+      opacity: .85;
+    }
+
+    .hero-badge {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      background: rgba(247,242,236,0.92);
+      border: 1px solid var(--arena);
+      padding: .7rem 1.4rem;
+      border-radius: 2rem;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      white-space: nowrap;
+      color: var(--gris);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .hero-badge .dot { width:8px;height:8px;border-radius:50%;background:var(--verde); flex-shrink:0; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 8%; }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    h2 em { font-style: italic; color: var(--terracota); }
+
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--verde);
+      font-weight: 500;
+      margin-bottom: .8rem;
+    }
+
+    /* ── SOBRE MÍ ── */
+    .sobre {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      background: #fff;
+    }
+
+    /* FOTO PLACEHOLDER */
+    .foto-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: var(--arena);
+      cursor: pointer;
+      transition: background .2s;
+      gap: .5rem;
+    }
+    .foto-placeholder:hover { background: #ddd0c0; }
+    .foto-placeholder .ph-icon { font-size: 2rem; }
+    .foto-placeholder p {
+      font-size: .78rem;
+      color: var(--gris);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* FOTOS ANTES / AHORA */
+    .fotos-historia {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      width: 100%;
+    }
+
+    .foto-card {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+
+    .foto-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .foto-label {
+      position: absolute;
+      bottom: .9rem; left: 50%; transform: translateX(-50%);
+      background: rgba(247,242,236,0.92);
+      border: 1px solid var(--arena);
+      padding: .35rem 1rem;
+      border-radius: 2rem;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--gris);
+    }
+
+    .foto-antes .foto-label { color: var(--gris); }
+    .foto-ahora .foto-label { color: var(--verde); border-color: var(--verde); }
+
+    .sobre-text p {
+      color: var(--gris);
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .chips {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      margin-top: 1.5rem;
+    }
+
+    .chip {
+      background: var(--crema);
+      border: 1px solid var(--arena);
+      padding: .35rem .9rem;
+      border-radius: 2rem;
+      font-size: .8rem;
+      color: var(--gris);
+    }
+
+    /* ── PILARES ── */
+    .pilares { background: var(--crema); }
+
+    .pilares-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 3.5rem;
+    }
+
+    .pilares-intro p {
+      color: var(--gris);
+      font-size: 1rem;
+      align-self: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 1.5rem;
+      padding: 2rem 1.6rem;
+      border: 1px solid var(--arena);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: .6rem;
+    }
+
+    .card p {
+      font-size: .88rem;
+      color: var(--gris);
+      line-height: 1.7;
+    }
+
+    /* ── PROGRAMA ── */
+    .programa { background: var(--text); color: var(--crema); }
+
+    .programa h2 { color: var(--crema); }
+    .programa h2 em { color: var(--terracota); }
+    .programa .section-label { color: var(--arena); }
+
+    .programa-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .programa-detalles {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+
+    .detalle {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+    }
+
+    .detalle-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(181,113,90,.2);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .detalle-text strong {
+      display: block;
+      font-size: .95rem;
+      margin-bottom: .2rem;
+      color: var(--crema);
+    }
+    .detalle-text span {
+      font-size: .88rem;
+      color: var(--arena);
+    }
+
+    .programa-cita {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 2rem;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .programa-cita blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--crema);
+      margin-bottom: 1.5rem;
+    }
+
+    .programa-cita .cite-name {
+      font-size: .8rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--terracota);
+    }
+
+    /* ── CÓMO FUNCIONA ── */
+    .como { background: #fff; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      padding: 2.5rem 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid var(--arena);
+      position: relative;
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--arena);
+      line-height: 1;
+      margin-bottom: .8rem;
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: .6rem;
+    }
+
+    .step p {
+      font-size: .88rem;
+      color: var(--gris);
+      line-height: 1.7;
+    }
+
+    /* ── QUÉ ES UN HEALTH COACH ── */
+    .que-es { background: var(--arena); }
+
+    .que-es-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    .que-es-texto > p {
+      color: var(--gris);
+      font-size: 1rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.8;
+    }
+
+    .que-es-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .qe-card {
+      background: #fff;
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+      border: 1px solid var(--arena);
+    }
+
+    .qe-titulo {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      margin-bottom: .8rem;
+      color: var(--gris);
+    }
+    .qe-no .qe-titulo strong { color: #c0705a; }
+    .qe-si .qe-titulo strong { color: var(--verde); }
+
+    .qe-card ul { list-style: none; }
+    .qe-card li {
+      font-size: .85rem;
+      color: var(--gris);
+      padding: .4rem 0;
+      border-bottom: 1px solid var(--arena);
+      display: flex; gap: .5rem; align-items: flex-start;
+    }
+    .qe-card li:last-child { border-bottom: none; }
+    .qe-no li::before { content: '✕'; color: #c0705a; font-size: .75rem; margin-top: .1rem; flex-shrink:0; }
+    .qe-si li::before { content: '✓'; color: var(--verde); font-size: .75rem; margin-top: .1rem; flex-shrink:0; }
+
+    /* ── PARA QUIÉN ── */
+    .para-quien { background: var(--crema); }
+
+    .para-quien-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .para-quien h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+    }
+
+    .lista-items { list-style: none; }
+    .lista-items li {
+      padding: .7rem 0;
+      border-bottom: 1px solid var(--arena);
+      font-size: .92rem;
+      color: var(--gris);
+      display: flex; align-items: flex-start; gap: .6rem;
+    }
+    .lista-items li::before {
+      content: '—';
+      color: var(--terracota);
+      flex-shrink: 0;
+    }
+
+    /* ── TESTIMONIOS ── */
+    .testimonios { background: var(--arena); }
+
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testimonio {
+      background: var(--crema);
+      border-radius: 1.5rem;
+      padding: 2rem;
+    }
+
+    .stars {
+      color: var(--terracota);
+      font-size: 1rem;
+      margin-bottom: .8rem;
+      letter-spacing: .1em;
+    }
+
+    .testimonio p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .t-name {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gris);
+    }
+
+    /* ── CTA ── */
+    .cta {
+      background: var(--verde);
+      text-align: center;
+      padding: 7rem 8%;
+    }
+
+    .cta h2 {
+      color: #fff;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+    .cta h2 em { color: rgba(255,255,255,.75); }
+
+    .cta p {
+      color: rgba(255,255,255,.85);
+      max-width: 520px;
+      margin: 1.2rem auto 2.5rem;
+      font-size: 1rem;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--verde);
+      display: inline-block;
+      padding: 1rem 2.4rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 500;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+
+    /* ── CONTACTO ── */
+    .contacto {
+      background: var(--crema);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contacto-info p {
+      color: var(--gris);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .contacto-links {
+      display: flex; flex-direction: column; gap: .8rem;
+    }
+
+    .contacto-link {
+      display: flex; align-items: center; gap: .8rem;
+      font-size: .92rem;
+      color: var(--gris);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .contacto-link:hover { color: var(--terracota); }
+    .contacto-link .ic { font-size: 1.1rem; }
+
+    form { display: flex; flex-direction: column; gap: 1rem; }
+
+    input, textarea, select {
+      width: 100%;
+      padding: .9rem 1.1rem;
+      border: 1.5px solid var(--arena);
+      border-radius: .75rem;
+      background: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      color: var(--text);
+      transition: border-color .2s;
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--terracota); }
+    textarea { resize: vertical; min-height: 110px; }
+
+    form label {
+      font-size: .8rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--gris);
+      margin-bottom: -.4rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: var(--gris);
+      text-align: center;
+      padding: 2.5rem 8%;
+      font-size: .82rem;
+    }
+    footer a { color: var(--gris); text-decoration: none; }
+    footer span { color: var(--terracota); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image { height: 340px; }
+      .hero-text { padding: 7rem 6% 3rem; }
+      .sobre { grid-template-columns: 1fr; }
+      .fotos-historia { max-width: 340px; margin: 0 auto; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .programa-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .para-quien-grid { grid-template-columns: 1fr; }
+      .testimonios-grid { grid-template-columns: 1fr; }
+      .contacto { grid-template-columns: 1fr; }
+      .pilares-intro { grid-template-columns: 1fr; gap: 1rem; }
+      .que-es-grid { grid-template-columns: 1fr; }
+      .que-es-cards { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      section { padding: 4rem 5%; }
+      .cards { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <!-- Logo: dos figuras unidas en M -->
+    <svg class="logo-icon" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="12" r="10" fill="#b5715a"/>
+      <circle cx="68" cy="18" r="7" fill="#b5715a"/>
+      <path d="M12 78 Q14 48 32 28 Q44 50 50 64 Q56 50 68 30 Q84 50 88 78 Z" fill="#b5715a"/>
+    </svg>
+    agus<span>speranza</span> · health coach
+  </a>
+  <ul>
+    <li><a href="#sobre">Sobre mí</a></li>
+    <li><a href="#programa">El programa</a></li>
+    <li><a href="#como">Cómo funciona</a></li>
+    <li><a href="#contacto" class="btn-nav">Hablemos</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-text">
+    <p class="eyebrow">✦ Bloom where you are planted</p>
+    <h1>Cambiá tus hábitos y<br /><em>encontrá tu mejor versión</em></h1>
+    <p class="hero-sub">Un programa de 3 meses para mujeres que quieren ganar salud de verdad — sin dietas extremas, sin culpa, sin apuros. Trabajamos tu alimentación, tu movimiento y tu descanso desde un lugar amable.</p>
+    <div class="btn-group">
+      <a href="#contacto" class="btn-primary">Empezar ahora</a>
+      <a href="#programa" class="btn-secondary">Ver el programa</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="hero-illustration">
+      <!-- Ilustración SVG orgánica -->
+      <svg viewBox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cuerpo femenino abstracto / planta -->
+        <ellipse cx="160" cy="340" rx="70" ry="18" fill="#b5715a" opacity=".15"/>
+        <!-- Tallo central -->
+        <path d="M160 320 Q155 260 160 200 Q165 140 158 80" stroke="#7a9e7e" stroke-width="3" stroke-linecap="round"/>
+        <!-- Hojas -->
+        <path d="M158 200 Q120 180 100 150 Q130 155 155 185" fill="#7a9e7e" opacity=".7"/>
+        <path d="M160 170 Q200 145 215 110 Q185 125 162 160" fill="#7a9e7e" opacity=".6"/>
+        <path d="M159 240 Q118 225 95 195 Q128 205 157 232" fill="#a8c5ab" opacity=".7"/>
+        <path d="M161 255 Q200 235 220 205 Q190 220 163 248" fill="#a8c5ab" opacity=".6"/>
+        <!-- Flor / cabeza abstracta -->
+        <circle cx="158" cy="72" r="28" fill="#e8ddd0"/>
+        <circle cx="158" cy="72" r="18" fill="#b5715a" opacity=".3"/>
+        <circle cx="158" cy="72" r="9" fill="#b5715a" opacity=".5"/>
+        <!-- Pétalos -->
+        <ellipse cx="158" cy="42" rx="8" ry="14" fill="#b5715a" opacity=".25" transform="rotate(-10 158 42)"/>
+        <ellipse cx="181" cy="56" rx="8" ry="14" fill="#b5715a" opacity=".25" transform="rotate(50 181 56)"/>
+        <ellipse cx="175" cy="90" rx="8" ry="14" fill="#b5715a" opacity=".25" transform="rotate(110 175 90)"/>
+        <ellipse cx="141" cy="92" rx="8" ry="14" fill="#b5715a" opacity=".25" transform="rotate(-110 141 92)"/>
+        <ellipse cx="135" cy="58" rx="8" ry="14" fill="#b5715a" opacity=".25" transform="rotate(-50 135 58)"/>
+        <!-- Puntos decorativos -->
+        <circle cx="100" cy="300" r="4" fill="#b5715a" opacity=".2"/>
+        <circle cx="220" cy="280" r="6" fill="#7a9e7e" opacity=".2"/>
+        <circle cx="240" cy="340" r="3" fill="#b5715a" opacity=".15"/>
+        <circle cx="80" cy="240" r="5" fill="#7a9e7e" opacity=".15"/>
+      </svg>
+    </div>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Sesiones 1:1 · Zoom · Encuentro presencial
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="sobre" id="sobre">
+  <div class="fotos-historia">
+    <div class="foto-card foto-antes" onclick="triggerUpload('antes')" style="cursor:pointer">
+      <img id="img-antes" style="display:none; width:100%; height:100%; object-fit:cover; object-position:top center;" alt="Agus antes" />
+      <div id="ph-antes" class="foto-placeholder">
+        <span class="ph-icon">📷</span>
+        <p>Hacé clic para<br>subir tu foto<br><em style="color:var(--terracota);font-style:normal;font-size:.7rem">(la de la fiesta)</em></p>
+      </div>
+      <input id="input-antes" type="file" accept="image/*" style="display:none" onchange="handleUpload(event,'antes')" />
+      <span class="foto-label">Antes</span>
+    </div>
+    <div class="foto-card foto-ahora" onclick="triggerUpload('ahora')" style="cursor:pointer">
+      <img id="img-ahora" style="display:none; width:100%; height:100%; object-fit:cover; object-position:top center;" alt="Agus hoy" />
+      <div id="ph-ahora" class="foto-placeholder">
+        <span class="ph-icon">📷</span>
+        <p>Hacé clic para<br>subir tu foto<br><em style="color:var(--verde);font-style:normal;font-size:.7rem">(la del ascensor)</em></p>
+      </div>
+      <input id="input-ahora" type="file" accept="image/*" style="display:none" onchange="handleUpload(event,'ahora')" />
+      <span class="foto-label">✦ Hoy</span>
+    </div>
+  </div>
+
+  <div class="sobre-text">
+    <p class="section-label">Sobre mí</p>
+    <h2>Hola, soy <em>Agus</em></h2>
+    <p>Hubo un tiempo en el que comía muy mal, dejaba de comer para entrar en un cuerpo que no me gustaba. Estaba perdida, sin hábitos saludables, y sin saber cómo salir de ese lugar.</p>
+    <p>Hoy estoy en un lugar muy diferente — con hábitos que sostuve en el tiempo, con amor propio y con ganas de moverme y cuidarme porque me hace bien, no por castigo.</p>
+    <p>Y quiero invitarte a vos a que también puedas sentirte mejor. Eso es exactamente lo que hacemos juntas en el programa.</p>
+    <div class="chips">
+      <span class="chip">🌱 Hábitos sostenibles</span>
+      <span class="chip">🌸 Bienestar femenino</span>
+      <span class="chip">🧘 Bienestar integral</span>
+      <span class="chip">💛 Enfoque sin culpa</span>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="pilares" id="pilares">
+  <div class="pilares-intro">
+    <div>
+      <p class="section-label">Los 4 pilares</p>
+      <h2>Todo lo que<br />vamos a<br /><em>trabajar juntas</em></h2>
+    </div>
+    <p>El programa aborda las cuatro áreas fundamentales del bienestar para que los cambios no sean un esfuerzo aislado, sino parte de tu vida.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🥗</div>
+      <h3>Alimentación</h3>
+      <p>Construimos una relación sana con la comida. Sin restricciones extremas. Aprendés a nutrirte de manera que se sienta bien y sea sostenible.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🤸</div>
+      <h3>Movimiento</h3>
+      <p>Encontramos el movimiento que a vos te gusta. Que no sea una obligación sino algo que esperes con ganas y que tu cuerpo agradezca.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌙</div>
+      <h3>Descanso</h3>
+      <p>El sueño y la recuperación son la base de todo lo demás. Trabajamos tu descanso como el pilar que realmente es.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💫</div>
+      <h3>Sostenerlo en el tiempo</h3>
+      <p>Los hábitos no son eventos, son tu nueva forma de vivir. El foco está en que lo que construyas juntas se quede con vos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EL PROGRAMA -->
+<section class="programa" id="programa">
+  <p class="section-label">El programa</p>
+  <h2>3 meses para<br /><em>transformar tu relación</em><br />con tu cuerpo</h2>
+
+  <div class="programa-grid">
+    <div class="programa-detalles">
+      <div class="detalle">
+        <div class="detalle-icon">📅</div>
+        <div class="detalle-text">
+          <strong>Sesiones cada 15 días vía Zoom</strong>
+          <span>Sesiones individuales donde avanzamos a tu ritmo, revisamos lo que funcionó y ajustamos lo que sea necesario.</span>
+        </div>
+      </div>
+      <div class="detalle">
+        <div class="detalle-icon">☕</div>
+        <div class="detalle-text">
+          <strong>Encuentro presencial final opcional</strong>
+          <span>Un café juntas para cerrar el proceso, celebrar tus logros y proyectar hacia adelante. Porque hay cosas que se hablan mejor en persona.</span>
+        </div>
+      </div>
+      <div class="detalle">
+        <div class="detalle-icon">💬</div>
+        <div class="detalle-text">
+          <strong>Acompañamiento entre sesiones</strong>
+          <span>No estás sola entre una sesión y otra. Tenés acceso para consultarme, compartir avances y recibir apoyo cuando lo necesitás.</span>
+        </div>
+      </div>
+      <div class="detalle">
+        <div class="detalle-icon">🎯</div>
+        <div class="detalle-text">
+          <strong>100% personalizado</strong>
+          <span>El programa se adapta a vos — tu historia, tu cuerpo, tus objetivos y tu ritmo de vida. No hay una sola forma de hacer esto bien.</span>
+        </div>
+      </div>
+      <div class="detalle">
+        <div class="detalle-icon">🌸</div>
+        <div class="detalle-text">
+          <strong>Enfoque femenino y sin culpa</strong>
+          <span>Trabajamos desde un lugar amable y realista. Tu cuerpo no es el problema — el problema es la relación que construiste con él, y eso se puede cambiar.</span>
+        </div>
+      </div>
+      <a href="#contacto" class="btn-primary" style="margin-top:.5rem">Quiero empezar →</a>
+    </div>
+
+    <div class="programa-cita">
+      <blockquote>"No se trata de ser perfecta.<br />Se trata de construir<br />hábitos que te hagan<br />sentir bien de verdad."</blockquote>
+      <p class="cite-name">— Agus Speranza, Health Coach</p>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="como" id="como">
+  <p class="section-label">¿Cómo funciona?</p>
+  <h2>Tres meses,<br /><em>un proceso real</em></h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Nos conocemos</h3>
+      <p>Una sesión inicial donde entiendo tu historia, tus hábitos actuales, tus objetivos y lo que ya intentaste. De acá sale tu plan personalizado.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Construimos juntas</h3>
+      <p>Cada 15 días tenemos una sesión por Zoom. Revisamos, ajustamos y seguimos avanzando. A tu ritmo, sin presiones.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Lo sostenemos</h3>
+      <p>El objetivo no es llegar a un "destino". Es que los hábitos se conviertan en tu forma natural de vivir. El último mes está dedicado a consolidar eso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ ES UN HEALTH COACH -->
+<section class="que-es" id="que-es">
+  <p class="section-label">¿Qué es un health coach?</p>
+  <div class="que-es-grid">
+    <div>
+      <h2>No soy médica ni<br />nutricionista —<br /><em>soy tu acompañante</em></h2>
+    </div>
+    <div class="que-es-texto">
+      <p>Un health coach es un profesional del bienestar que te acompaña en el proceso de cambiar hábitos. No receto ni diagnostico — trabajo con vos para que entiendas qué necesita tu cuerpo y cómo construir una vida más saludable de manera sostenida.</p>
+      <div class="que-es-cards">
+        <div class="qe-card qe-no">
+          <p class="qe-titulo">Un health coach <strong>no</strong> es...</p>
+          <ul>
+            <li>Un médico o nutricionista</li>
+            <li>Alguien que te da una dieta y listo</li>
+            <li>Una persona que te obliga a hacer algo</li>
+            <li>Una solución mágica o rápida</li>
+          </ul>
+        </div>
+        <div class="qe-card qe-si">
+          <p class="qe-titulo">Un health coach <strong>sí</strong> es...</p>
+          <ul>
+            <li>Tu guía en el proceso de cambio</li>
+            <li>Alguien que te ayuda a entenderte</li>
+            <li>Un espacio sin juicio ni presión</li>
+            <li>Un acompañamiento real y personalizado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN -->
+<section class="para-quien">
+  <p class="section-label">¿Es para mí?</p>
+  <h2>Este programa<br />es para vos <em>si...</em></h2>
+
+  <div class="para-quien-grid">
+    <div>
+      <h3>Te sentís identificada si...</h3>
+      <ul class="lista-items">
+        <li>Querés sentirte bien en tu cuerpo pero no sabés por dónde empezar</li>
+        <li>Empezaste mil dietas y ninguna duró más de dos semanas</li>
+        <li>Tu relación con la comida es complicada o te genera ansiedad</li>
+        <li>Sentís que el movimiento es una obligación y no un placer</li>
+        <li>Tu energía o tu humor están por el piso y no sabés bien por qué</li>
+        <li>Querés cambiar pero necesitás apoyo y acompañamiento</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Al terminar el programa vas a...</h3>
+      <ul class="lista-items">
+        <li>Entender qué necesita tu cuerpo y cómo escucharlo</li>
+        <li>Tener una relación más amable con la comida y el movimiento</li>
+        <li>Dormir mejor y tener más energía durante el día</li>
+        <li>Saber cómo sostener los hábitos que construiste</li>
+        <li>Sentirte más en casa en tu propio cuerpo</li>
+        <li>Tener herramientas concretas para cuando todo se complique</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios">
+  <p class="section-label">Testimonios</p>
+  <h2>Lo que dicen<br />las que <em>ya lo hicieron</em></h2>
+
+  <div class="testimonios-grid">
+    <div class="testimonio">
+      <div class="stars">★★★★★</div>
+      <p>"Por primera vez en años no siento culpa cuando como. Aprendí a escuchar mi cuerpo y a moverme porque me hace bien, no como castigo."</p>
+      <p class="t-name">— Valentina, 31 años</p>
+    </div>
+    <div class="testimonio">
+      <div class="stars">★★★★★</div>
+      <p>"Agus te acompaña de una manera tan cálida que el proceso no se siente difícil. Los cambios vinieron solos cuando dejé de forzarlos."</p>
+      <p class="t-name">— Lucía, 28 años</p>
+    </div>
+    <div class="testimonio">
+      <div class="stars">★★★★★</div>
+      <p>"Empecé a dormir mejor, a moverme con ganas y a disfrutar la comida de verdad. Son cosas que parecen imposibles y con Agus se volvieron mi realidad."</p>
+      <p class="t-name">— Camila, 35 años</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>¿Lista para<br /><em>empezar a sentirte bien?</em></h2>
+  <p>El primer paso es una conversación. Sin compromiso, sin presión. Contame dónde estás y vemos juntas si somos la combinación indicada.</p>
+  <a href="#contacto" class="btn-white">Escribime y hablamos</a>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="contacto-info">
+    <p class="section-label">Contacto</p>
+    <h2>Hablemos<br /><em>sin vueltas</em></h2>
+    <p>Completá el formulario o escribime por email o Instagram. Te respondo en menos de 24 horas.</p>
+    <div class="contacto-links">
+      <a href="mailto:agustinasperanza22@gmail.com" class="contacto-link">
+        <span class="ic">✉️</span> agustinasperanza22@gmail.com
+      </a>
+      <a href="https://instagram.com/agussperanza.health" class="contacto-link" target="_blank">
+        <span class="ic">📷</span> @agussperanza.health
+      </a>
+      <a href="https://tiktok.com/@agussperanza.health" class="contacto-link" target="_blank">
+        <span class="ic">🎵</span> @agussperanza.health
+      </a>
+    </div>
+  </div>
+
+  <form onsubmit="enviarFormulario(event)">
+    <div>
+      <label>Tu nombre</label>
+      <input type="text" placeholder="¿Cómo te llamás?" required />
+    </div>
+    <div>
+      <label>Tu email</label>
+      <input type="email" placeholder="hola@mail.com" required />
+    </div>
+    <div>
+      <label>¿Qué te trae por acá?</label>
+      <select>
+        <option value="">Seleccioná una opción</option>
+        <option>Quiero conocer el programa de 3 meses</option>
+        <option>Tengo preguntas antes de decidir</option>
+        <option>Quiero conocer cómo funciona el programa</option>
+        <option>Otro</option>
+      </select>
+    </div>
+    <div>
+      <label>Contame un poco</label>
+      <textarea placeholder="¿Qué está pasando? ¿Qué te gustaría cambiar? Sin presión, lo que quieras compartir..."></textarea>
+    </div>
+    <button type="submit" class="btn-primary" style="border:none;cursor:pointer;font-family:inherit;width:100%;text-align:center;">
+      Enviar mensaje ✨
+    </button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg style="width:36px;height:28px;margin-bottom:.6rem;opacity:.4" viewBox="0 0 100 80" fill="none">
+    <circle cx="32" cy="12" r="10" fill="#f7f2ec"/>
+    <circle cx="68" cy="18" r="7" fill="#f7f2ec"/>
+    <path d="M12 78 Q14 48 32 28 Q44 50 50 64 Q56 50 68 30 Q84 50 88 78 Z" fill="#f7f2ec"/>
+  </svg>
+  <p><em style="font-style:italic;letter-spacing:.05em">Bloom where you are planted</em></p>
+  <p style="margin-top:.4rem">© 2026 <span>Agus Speranza</span> · Health Coach · Hecho con 💛 para mujeres que quieren sentirse bien</p>
+</footer>
+
+<script>
+  // ── FOTOS ──
+  function triggerUpload(id) {
+    document.getElementById('input-' + id).click();
+  }
+
+  function handleUpload(event, id) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const data = e.target.result;
+      try { localStorage.setItem('agus-foto-' + id, data); } catch(e) {}
+      showPhoto(id, data);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function showPhoto(id, src) {
+    const img = document.getElementById('img-' + id);
+    const ph  = document.getElementById('ph-' + id);
+    img.src = src;
+    img.style.display = 'block';
+    ph.style.display = 'none';
+  }
+
+  // Al cargar la página, restaurar fotos guardadas
+  window.addEventListener('DOMContentLoaded', () => {
+    ['antes','ahora'].forEach(id => {
+      try {
+        const saved = localStorage.getItem('agus-foto-' + id);
+        if (saved) showPhoto(id, saved);
+      } catch(e) {}
+    });
+  });
+
+  // ── FORMULARIO ──
+  function enviarFormulario(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '¡Mensaje enviado! Te escribo pronto 🌿';
+    btn.style.background = '#7a9e7e';
+    btn.disabled = true;
+    e.target.reset();
+  }
+
+  // ── NAV HIGHLIGHT ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--terracota)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
